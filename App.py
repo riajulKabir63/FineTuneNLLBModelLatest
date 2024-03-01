@@ -5,7 +5,7 @@ import numpy as np
 from transformers import NllbTokenizer, AutoModelForSeq2SeqLM
 import torch
 
-@st.cache(hash_funcs={"tokenizers.AddedToken": lambda _: None})
+
 def get_model():
     tokenizer = NllbTokenizer.from_pretrained('facebook/nllb-200-distilled-600M')
     model = AutoModelForSeq2SeqLM.from_pretrained("riajul/FineTunedNLLBModelLatest")
