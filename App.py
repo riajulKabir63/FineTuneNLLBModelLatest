@@ -5,7 +5,7 @@ import numpy as np
 from transformers import NllbTokenizer, AutoModelForSeq2SeqLM
 import torch
 
-@st.cache_resource
+@st.cache_data
 def get_model():
     tokenizer = NllbTokenizer.from_pretrained('facebook/nllb-200-distilled-600M')
     model = AutoModelForSeq2SeqLM.from_pretrained("riajul/FineTunedNLLBModelLatest")
@@ -21,4 +21,4 @@ if user_input and button :
     inputs = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True)
     output = model.generate(**inputs)
     translated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-    st.write("Translated Rohingya text: ", translated_text)
+    st.write(translated_text)
